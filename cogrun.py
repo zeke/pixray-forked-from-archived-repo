@@ -24,7 +24,7 @@ class BasePixrayPredictor(BasePredictor):
     def predict(self, 
         settings: str = Input(description="Default settings to use"),
         prompts: str = Input(description="Text prompts", default=None),
-    **kwargs) -> Iterator[str]:
+    **kwargs) -> Generator[str, None, None]:
         # workaround for import issue when deploying
         import pixray
         """Run a single prediction on the model"""
