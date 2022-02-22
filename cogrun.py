@@ -1,6 +1,6 @@
 from cog import BasePredictor, Input
 from pathlib import Path
-from typing import Iterator
+from typing import Generator
 import torch
 import yaml
 import pathlib
@@ -93,7 +93,7 @@ class BasePixrayPredictor(BasePredictor):
 class PixrayApi(BasePixrayPredictor):
     def predict(self, 
         settings: str = Input(description="yaml settings", default='\n')
-    ) -> Iterator[int]:
+    ) -> Generator[str, None, None]:
         ydict = yaml.safe_load(settings)
         if ydict == None:
             # no settings
